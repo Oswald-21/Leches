@@ -95,8 +95,8 @@ const productos = [
     nombre: "Leche entera",
     marca: "Asturiana",
     categoria: "entera",
-    ean: "8410297010200",
-    confianza: "alta",
+    ean: "8410297112041",
+    confianza: "alta de 1 litro",
     descripcion: "Leche entera Central Lechera Asturiana en formato carton."
   },
   {
