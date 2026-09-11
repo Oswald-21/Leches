@@ -1,19 +1,38 @@
 :root {
-  color-scheme: light;
-  --bg: #edf5fb;
-  --bg-2: #f8fbfd;
+  color-scheme: light dark;
+  --bg: #f6f1e7;
+  --bg-2: #fbf8f2;
   --surface: #ffffff;
-  --surface-soft: #f2f7fb;
-  --text: #122335;
-  --muted: #617284;
-  --line: #d7e5ef;
-  --primary: #0b5cad;
-  --primary-dark: #08427d;
-  --mint: #12a98b;
-  --rose: #d7495c;
-  --amber: #c9841d;
-  --shadow: 0 14px 38px rgba(16, 44, 72, 0.13);
-  --radius: 8px;
+  --surface-soft: #efe8d9;
+  --text: #2a251d;
+  --muted: #7c7261;
+  --line: #e4dcc9;
+  --primary: #cc785c;
+  --primary-dark: #a85a41;
+  --mint: #4f9c82;
+  --rose: #c85a72;
+  --amber: #bd8a34;
+  --shadow: 0 14px 38px rgba(42, 33, 20, 0.12);
+  --radius: 14px;
+  --radius-lg: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1914;
+    --bg-2: #201d17;
+    --surface: #29251e;
+    --surface-soft: #322d24;
+    --text: #efe8da;
+    --muted: #a89d89;
+    --line: #3e372c;
+    --primary: #e2916d;
+    --primary-dark: #f0ab86;
+    --mint: #6cb599;
+    --rose: #dd8093;
+    --amber: #dba75f;
+    --shadow: 0 14px 38px rgba(0, 0, 0, 0.45);
+  }
 }
 
 * {
@@ -24,10 +43,11 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(18, 169, 139, 0.18), transparent 28rem),
+    radial-gradient(circle at top left, rgba(204, 120, 92, 0.16), transparent 28rem),
     linear-gradient(180deg, var(--bg), var(--bg-2));
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -40,8 +60,8 @@ input {
   top: 0;
   z-index: 10;
   padding: 1rem;
-  background: rgba(248, 251, 253, 0.92);
-  border-bottom: 1px solid rgba(215, 229, 239, 0.9);
+  background: color-mix(in srgb, var(--bg-2) 92%, transparent);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
 
@@ -57,14 +77,15 @@ input {
   color: var(--primary);
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 h1 {
   margin: 0;
   font-size: clamp(1.65rem, 7vw, 3.3rem);
-  line-height: 1;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--text);
 }
 
 .hero-copy {
@@ -86,13 +107,14 @@ h1 {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 6px 18px rgba(18, 35, 53, 0.05);
+  box-shadow: 0 6px 18px rgba(42, 33, 20, 0.06);
 }
 
 .summary strong {
   display: block;
   font-size: 1.45rem;
   line-height: 1;
+  color: var(--primary-dark);
 }
 
 .summary span {
@@ -122,7 +144,7 @@ h1 {
 
 #search-input {
   width: 100%;
-  min-height: 2.8rem;
+  min-height: 2.9rem;
   padding: 0 0.9rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -133,7 +155,7 @@ h1 {
 
 #search-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(11, 92, 173, 0.14);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
 }
 
 .tabs,
@@ -222,9 +244,9 @@ h1 {
   display: grid;
   gap: 0.9rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
 }
 
@@ -243,8 +265,8 @@ h1 {
   border-radius: var(--radius);
   color: #fff;
   text-align: center;
-  background: linear-gradient(160deg, var(--primary), #5ab7ff);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  background: linear-gradient(160deg, var(--primary), #f0ab86);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
 .product-card[data-category="semidesnatada"] .product-mark {
@@ -256,7 +278,7 @@ h1 {
 }
 
 .product-card[data-category="sin_lactosa"] .product-mark {
-  background: linear-gradient(160deg, #934bc7, #ff84b5);
+  background: linear-gradient(160deg, #8a5fc2, #e59bc0);
 }
 
 .product-card[data-category="especiales"] .product-mark {
@@ -296,6 +318,7 @@ h1 {
   margin: 0.55rem 0 0.35rem;
   font-size: 1rem;
   line-height: 1.25;
+  color: var(--text);
 }
 
 .product-meta p {
@@ -311,7 +334,7 @@ h1 {
   padding: 0.55rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #fff;
+  background: #ffffff;
 }
 
 .barcode-svg {
@@ -395,6 +418,74 @@ h1 {
 
   .content {
     padding: 1.25rem 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 0.65rem 0.75rem;
+  }
+
+  /* En móvil la cabecera (eyebrow, título grande, texto y stats)
+     estorbaba antes de llegar a la búsqueda: se oculta y solo
+     queda un título compacto + la búsqueda/filtros. */
+  .eyebrow,
+  .hero-copy,
+  .summary {
+    display: none;
+  }
+
+  .hero {
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .controls {
+    gap: 0.6rem;
+  }
+
+  .content {
+    padding: 0.75rem;
+  }
+
+  .card-top {
+    grid-template-columns: 1fr;
+  }
+
+  .product-mark {
+    min-height: auto;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .mark-kind {
+    margin-top: 0;
+  }
+
+  .barcode-panel {
+    min-height: auto;
+    padding: 0.5rem;
+  }
+
+  .barcode-pending {
+    min-height: 5rem;
+  }
+
+  .card-actions {
+    flex-wrap: wrap;
+  }
+
+  .card-actions code {
+    flex: 1 1 100%;
+    white-space: normal;
+    word-break: break-all;
   }
 }
 
